@@ -133,7 +133,7 @@ class App extends Component {
         <Draft selectedTeam={this.state.selectedTeam} teams={this.state.fantasyTeams} onTeamSelect={this.onTeamSelect} />
         {this.state.fantasyTeams.map(fantasyTeam => {
           return (
-            < FantasyTeam onTeamSelect={this.onTeamSelect} team={fantasyTeam}/>
+            < FantasyTeam selectedTeam={this.state.selectedTeam}onTeamSelect={this.onTeamSelect} team={fantasyTeam}/>
             
             )
           })}

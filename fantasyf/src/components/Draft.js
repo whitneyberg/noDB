@@ -23,8 +23,10 @@ class Draft extends Component {
         })}
         <h2>Fantasy Teams</h2>
         {this.state.teams.map((team, index) => {
+          console.log(team)
+          console.log(this.props.selectedTeam)
           return (
-            <div className={(this.props.selectedTeam === team.name) ? "selected" : ""} onClick={this.props.onTeamSelect} key={index}>
+            <div  onClick={this.props.onTeamSelect} key={index}>
               <div>{team.name}</div>
             </div>
 
