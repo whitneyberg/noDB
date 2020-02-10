@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import EditTeamName from './EditTeamName'
-// import axios from "axios";
-// import Players from './Players'
+import EditTeamName from './EditTeamName';
 
 class Draft extends Component {
   constructor(props) {
@@ -20,7 +18,7 @@ class Draft extends Component {
       <div>
         <h2>Selected Team's Players</h2>
         {this.props.selectedTeam.players.map((element)=>{
-        return <p>{element.displayName}</p>
+        return <p>{element.displayName}<button className='deleteButton' onClick={this.props.deletePlayer}> Delete Player</button></p>
         })}
         <h2>Fantasy Teams</h2>
         <EditTeamName editTeamName={this.props.editTeamName} name={this.props.selectedTeam.name}/>

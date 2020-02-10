@@ -27,18 +27,44 @@ background-color: red;
   padding:15px;
   font-size: 2.5rem;
   color:white;
-  
+ }
 
-}
+ .addPlayer{
+  height: 25px;
+  width: 100px;
+  background-color: white;
+  color: black;
+  font-family: #ffffff;
+  font-weight: bold;
+  margin-left: 15px;
+  border-color: navy;
+  border-width: thick;
+  border-radius: 20px;
+
+ }
 
 .deleteButton{
-height: 35px;
+height: 25px;
 width: 100px;
+background-color: red;
+color: white;
+font-family: #ffffff;
+font-weight: bold;
+margin-left: 15px;
+border-radius: 10px;
 }
 
-.editButton{
-  height: 25px;
-  width: 50px;
+.editTeamName{
+height: 25px;
+width: 125px;
+background-color:white;
+color:black;
+font-family: #ffffff;
+font-weight: bold;
+margin-left: 15px;
+border-radius: 20px;
+border-color: red;
+border-width: thick;
 }
 
 .selected {

@@ -9,7 +9,7 @@ module.exports = {
 
     addPlayerToTeam: (req, res) => {
         const { team, player } = req.body;
-        console.log(team, player)
+    
 
         const teamIndex = teams.findIndex((fantasyTeam) => {
             return fantasyTeam.name === team
@@ -20,7 +20,7 @@ module.exports = {
     },
 
     deletePlayerFromTeam: (req, res) => {
-        const { team, player } = req.body;
+        const { team, player } = req.query;
         const teamIndex = teams.findIndex((fantasyTeam) => {
             return fantasyTeam.name === team
         })
@@ -31,7 +31,7 @@ module.exports = {
         console.log(playerIndex)
 
         teams[teamIndex].players.splice(playerIndex, 1)
-        res.status(200).send(teams[teamIndex])
+        res.status(200).send(teams)
 
     },
 

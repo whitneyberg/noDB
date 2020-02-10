@@ -22,7 +22,7 @@ handleChange = (e) =>{
         return (
             <div>
             <input onChange={this.handleChange}/>
-            <button  onClick={()=>{this.props.editTeamName(this.props.name, this.state.userInput)}}>Edit Team Name</button>
+            <button className='editTeamName'  onClick={()=>{this.props.editTeamName(this.props.name, this.state.userInput)}}>Edit Team Name</button>
             </div>
         )
         

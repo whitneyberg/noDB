@@ -58,7 +58,7 @@ class App extends Component {
       this.setState({
         fantasyTeams: res.data
       });
-    });
+    }).catch((error) => (console.error(error)))
   }
 
   setCurrentViewablePosition = (position) => {
@@ -81,7 +81,7 @@ class App extends Component {
         fantasyTeams: success.data,
         selectedTeam: success.data[index]
       })
-    })
+    }).catch((error) => (console.error(error)))
   }
 
   onTeamSelect = (team) => {
@@ -96,8 +96,8 @@ class App extends Component {
     }
 
    deletePlayerFromTeam = () => {
-     const {selectedPlayer} = this.state
-     axios.delete(`http://localhost:5050/api/teams`, {team: this.state.selectedTeam.name, player: selectedPlayer}).then((success)=>{
+
+     axios.delete(`http://localhost:5050/api/teams/?team=${this.state.selectedTeam.name}&player=${this.state.selectedPlayer.name}`).then((success)=>{
     const index= success.data.findIndex(team => team.name === this.state.selectedTeam.name)
         this.setState({
   fantasyTeams: success.data,
@@ -135,10 +135,10 @@ class App extends Component {
         <button className='button' onClick={() => this.setCurrentViewablePosition('tightEnds')}>Get TEs</button>
         <button className='button' onClick={() => this.setCurrentViewablePosition('kickers')}>Get Ks</button>
 
-      deletePlayerFromTeam={this.deletePlayerFromTeam} selectedPlayer={this.state.team.selectedPlayer}
+    
 
 
-        <Draft editTeamName={this.editTeamName} selectedTeam={this.state.selectedTeam} teams={this.state.fantasyTeams} onTeamSelect={this.onTeamSelect} />
+        <Draft deletePlayer={this.deletePlayerFromTeam} editTeamName={this.editTeamName} selectedTeam={this.state.selectedTeam} teams={this.state.fantasyTeams} onTeamSelect={this.onTeamSelect} />
         {this.state.fantasyTeams.map(fantasyTeam => {
           return (
             < FantasyTeam selectedTeam={this.state.selectedTeam}onTeamSelect={this.onTeamSelect} team={fantasyTeam}/>

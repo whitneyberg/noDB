@@ -21,7 +21,7 @@ class Players extends Component {
                         <div className={(this.props.selectedPlayer.lname === player.lname) ? "selected" : ''}
                             onClick={() => this.props.onPlayerSelect(player)}
                             key={index}>
-                            <div>{player.displayName}</div>
+                            <div>{player.displayName}  </div>
                         </div>
                     )
                 })}
