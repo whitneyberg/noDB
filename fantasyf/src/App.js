@@ -130,20 +130,20 @@ class App extends Component {
         <button className='button' onClick={() => this.setCurrentViewablePosition('tightEnds')}>Get TEs</button>
         <button className='button' onClick={() => this.setCurrentViewablePosition('kickers')}>Get Ks</button>
 
+        <Draft selectedTeam={this.state.selectedTeam} teams={this.state.fantasyTeams} onTeamSelect={this.onTeamSelect} />
         {this.state.fantasyTeams.map(fantasyTeam => {
           return (
-            <p onClick={()=> this.onTeamSelect(fantasyTeam) }>{fantasyTeam.name}</p>
-          )
-        })}
+            < FantasyTeam onTeamSelect={this.onTeamSelect} team={fantasyTeam}/>
+            
+            )
+          })}
+
+
+          
+                  <button className='addPlayer' onClick={this.addPlayerToTeam}>Add Player</button>
 
 
 
-
-        < FantasyTeam players={this.state.selectedTeam.players} />
-
-        <Draft selectedTeam={this.state.selectedTeam} teams={this.state.fantasyTeams} onTeamSelect={this.onTeamSelect} />
-
-        <button className='addPlayer' onClick={this.addPlayerToTeam}>Add Player</button>
 
       </div>
     );

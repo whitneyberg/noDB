@@ -17,6 +17,10 @@ class Draft extends Component {
   render() {
     return (
       <div>
+        <h2>Selected Team's Players</h2>
+        {this.props.selectedTeam.players.map((element)=>{
+        return <p>{element.displayName}</p>
+        })}
         <h2>Fantasy Teams</h2>
         {this.state.teams.map((team, index) => {
           return (

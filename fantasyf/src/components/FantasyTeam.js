@@ -3,11 +3,13 @@ import React from "react";
 function FantasyTeam(props){
   return(
     <div>
-      { props.players.map((player) => {
-          console.log(player)
-          return <div> player</div>
+      <p  onClick={()=> props.onTeamSelect(props.team) }>{props.team.name}</p>
+    {/* <div>
+      { props.team.players.map((player) => {
+          return <div> {player.displayName}</div>
         })
       }
+    </div> */}
     </div>
   )
 
