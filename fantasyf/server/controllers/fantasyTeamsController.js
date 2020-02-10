@@ -45,7 +45,7 @@ module.exports = {
         })
         console.log(name)
         teams[teamIndex].name = newTeamName;
-        res.status(200).send(teams[teamIndex])
+        res.status(200).send(teams)
     }
 }
 

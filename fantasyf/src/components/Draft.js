@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import EditTeamName from './EditTeamName'
 // import axios from "axios";
 // import Players from './Players'
 
@@ -22,6 +23,7 @@ class Draft extends Component {
         return <p>{element.displayName}</p>
         })}
         <h2>Fantasy Teams</h2>
+        <EditTeamName editTeamName={this.props.editTeamName} name={this.props.selectedTeam.name}/>
         {this.state.teams.map((team, index) => {
           console.log(team)
           console.log(this.props.selectedTeam)

@@ -3,8 +3,8 @@ import Header from "./components/Header";
 import "./App.css";
 import Players from "./components/Players";
 import axios from "axios";
-import Draft from "./components/Draft"
-import FantasyTeam from "./components/FantasyTeam"
+import Draft from "./components/Draft";
+import FantasyTeam from "./components/FantasyTeam";
 
 class App extends Component {
   constructor() {
@@ -90,16 +90,21 @@ class App extends Component {
     })
   }
 
-  // // //  deletePlayerFromTeam = () => {
-  // // //    const {selectedPlayer} = this.state
-  // // //    axios.delete(`http://localhost:5050/api/teams`, {team: selectedTeam.name, player: selected player}).then((success)=>{
-  // //   const index= success.data.findIndex(team => team.name === this.state.selectedTeam.name)
-  //       this.setState({
-  // fantasyTeams: success.data,
-  // selectedTeam: succes.data[index]
+  editTeamName = (oldTeamName, newTeamName) =>{
+    axios.put(`http://localhost:5050/api/teams/${oldTeamName}`,{newTeamName: newTeamName}).then(res=> this.setState({fantasyTeams: res.data}))   
+    
+    }
 
-  //       })
-  // // })
+   deletePlayerFromTeam = () => {
+     const {selectedPlayer} = this.state
+     axios.delete(`http://localhost:5050/api/teams`, {team: this.state.selectedTeam.name, player: selectedPlayer}).then((success)=>{
+    const index= success.data.findIndex(team => team.name === this.state.selectedTeam.name)
+        this.setState({
+  fantasyTeams: success.data,
+  selectedTeam: success.data[index]
+
+        })
+  })}
   // // //        
 
   render() {
@@ -130,7 +135,10 @@ class App extends Component {
         <button className='button' onClick={() => this.setCurrentViewablePosition('tightEnds')}>Get TEs</button>
         <button className='button' onClick={() => this.setCurrentViewablePosition('kickers')}>Get Ks</button>
 
-        <Draft selectedTeam={this.state.selectedTeam} teams={this.state.fantasyTeams} onTeamSelect={this.onTeamSelect} />
+      deletePlayerFromTeam={this.deletePlayerFromTeam} selectedPlayer={this.state.team.selectedPlayer}
+
+
+        <Draft editTeamName={this.editTeamName} selectedTeam={this.state.selectedTeam} teams={this.state.fantasyTeams} onTeamSelect={this.onTeamSelect} />
         {this.state.fantasyTeams.map(fantasyTeam => {
           return (
             < FantasyTeam selectedTeam={this.state.selectedTeam}onTeamSelect={this.onTeamSelect} team={fantasyTeam}/>
